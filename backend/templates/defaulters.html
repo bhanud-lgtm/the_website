@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Records - Adarsh Public School</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+
+<!-- ==============================
+     NAVBAR
+================================ -->
+
+<header class="navbar">
+
+    <div class="logo">
+
+        <h2>
+            Adarsh Public School
+        </h2>
+
+    </div>
+
+
+    <nav>
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/about">
+            About
+        </a>
+
+        <a href="/events">
+            Events
+        </a>
+
+        <a href="/defaulters">
+            Students
+        </a>
+
+        <a href="/admin">
+            Admin
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- ==============================
+     PAGE HEADER
+================================ -->
+
+<section class="page-header">
+
+    <p class="section-small">
+        STUDENT RECORDS
+    </p>
+
+    <h1>
+        Student Records
+    </h1>
+
+    <p>
+        Student fee records and pending payment details.
+    </p>
+
+</section>
+
+
+
+<!-- ==============================
+     STUDENT RECORDS
+================================ -->
+
+<section class="events-container">
+
+
+    {% if defaulters %}
+
+
+        {% for student in defaulters %}
+
+
+        <div class="event-card">
+
+
+            <div class="event-info">
+
+
+                <h2>
+                    {{ student["student_name"] }}
+                </h2>
+
+
+                <p>
+                    <strong>Class:</strong>
+                    {{ student["class_name"] }}
+                </p>
+
+
+                <p>
+                    <strong>Roll Number:</strong>
+                    {{ student["roll_number"] or "N/A" }}
+                </p>
+
+
+                <p>
+                    <strong>Due Amount:</strong>
+                    ₹{{ student["due_amount"] }}
+                </p>
+
+
+                <p>
+                    <strong>Due Date:</strong>
+                    {{ student["due_date"] or "N/A" }}
+                </p>
+
+
+                <p>
+                    <strong>Reason:</strong>
+                    {{ student["reason"] or "N/A" }}
+                </p>
+
+
+
+                <!-- ADMIN ACTIONS -->
+
+                <div style="margin-top: 18px;">
+
+                    <a href="/edit-defaulter/{{ student['id'] }}"
+                       class="btn">
+
+                        Edit
+
+                    </a>
+
+
+                    <a href="/delete-defaulter/{{ student['id'] }}"
+                       class="btn secondary"
+                       onclick="return confirm('Are you sure you want to delete this student record?');">
+
+                        Delete
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        {% endfor %}
+
+
+    {% else %}
+
+
+        <!-- NO STUDENTS -->
+
+        <div style="
+            text-align: center;
+            padding: 50px 20px;
+        ">
+
+            <h2>
+                No Student Records Available
+            </h2>
+
+            <p style="margin-top: 10px; color: #666;">
+
+                Student records will appear here
+                when they are added.
+
+            </p>
+
+        </div>
+
+
+    {% endif %}
+
+
+</section>
+
+
+
+<!-- ==============================
+     FOOTER
+================================ -->
+
+<footer>
+
+    <h3>
+        Adarsh Public School
+    </h3>
+
+
+    <p>
+        Bhadva Bhainslana Road,
+        Near Jaal ke Balaji
+    </p>
+
+
+    <p>
+        Contact: 9829473980
+    </p>
+
+
+    <p class="copyright">
+
+        © 2026 Adarsh Public School.
+        All Rights Reserved.
+
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>

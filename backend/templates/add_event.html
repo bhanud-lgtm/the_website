@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Add Event - Adarsh Public School</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+
+<header class="navbar">
+
+    <div class="logo">
+        <h2>Adarsh Public School</h2>
+    </div>
+
+    <nav>
+
+        <a href="/">Home</a>
+
+        <a href="/about">About</a>
+
+        <a href="/events">Events</a>
+
+        <a href="/defaulters">Students</a>
+
+        <a href="/admin">Admin</a>
+
+        <a href="/logout">Logout</a>
+
+    </nav>
+
+</header>
+
+
+
+<section class="page-header">
+
+    <p class="section-small">
+        ADMINISTRATION
+    </p>
+
+    <h1>
+        Add New Event
+    </h1>
+
+    <p>
+        Add a new school event or activity.
+    </p>
+
+</section>
+
+
+
+<section class="admin-container">
+
+    <div class="admin-card">
+
+        <h2>
+            📅 Event Details
+        </h2>
+
+
+        <form action="/add-event" method="POST">
+
+
+            <label>
+                Event Title
+            </label>
+
+            <input
+                type="text"
+                name="title"
+                placeholder="Enter event title"
+                required
+            >
+
+
+            <label>
+                Event Date
+            </label>
+
+            <input
+                type="date"
+                name="event_date"
+                required
+            >
+
+
+            <label>
+                Description
+            </label>
+
+            <textarea
+                name="description"
+                placeholder="Enter event description"
+                rows="5"
+            ></textarea>
+
+
+            <button type="submit">
+                Add Event
+            </button>
+
+
+        </form>
+
+    </div>
+
+</section>
+
+
+
+<footer>
+
+    <h3>
+        Adarsh Public School
+    </h3>
+
+    <p>
+        Bhadva Bhainslana Road,
+        Near Jaal ke Balaji
+    </p>
+
+    <p>
+        Contact: 9829473980
+    </p>
+
+    <p class="copyright">
+        © 2026 Adarsh Public School.
+        All Rights Reserved.
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>

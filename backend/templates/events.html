@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>School Events - Adarsh Public School</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+
+<!-- ==============================
+     NAVBAR
+================================ -->
+
+<header class="navbar">
+
+    <div class="logo">
+
+        <h2>
+            Adarsh Public School
+        </h2>
+
+    </div>
+
+
+    <nav>
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/about">
+            About
+        </a>
+
+        <a href="/events">
+            Events
+        </a>
+
+        <a href="/defaulters">
+            Students
+        </a>
+
+        <a href="/admin">
+            Admin
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- ==============================
+     PAGE HEADER
+================================ -->
+
+<section class="page-header">
+
+    <p class="section-small">
+        SCHOOL ACTIVITIES
+    </p>
+
+    <h1>
+        Upcoming Events
+    </h1>
+
+    <p>
+        Stay updated with the latest events and
+        activities at Adarsh Public School.
+    </p>
+
+</section>
+
+
+
+<!-- ==============================
+     EVENTS
+================================ -->
+
+<section class="events-container">
+
+
+    {% if events %}
+
+
+        {% for event in events %}
+
+
+        <div class="event-card">
+
+
+            <!-- DATE -->
+
+            <div class="event-date">
+
+                <strong>
+                    {{ event["event_date"].split("-")[2] }}
+                </strong>
+
+                <span>
+                    {{ event["event_date"].split("-")[1] }}
+                </span>
+
+            </div>
+
+
+
+            <!-- EVENT INFORMATION -->
+
+            <div class="event-info">
+
+                <h2>
+                    {{ event["title"] }}
+                </h2>
+
+
+                <p>
+                    {{ event["description"] }}
+                </p>
+
+
+
+                <!-- ADMIN ACTIONS -->
+
+                <div style="margin-top: 18px;">
+
+                    <a href="/edit-event/{{ event['id'] }}"
+                       class="btn">
+
+                        Edit
+
+                    </a>
+
+
+                    <a href="/delete-event/{{ event['id'] }}"
+                       class="btn secondary"
+                       onclick="return confirm('Are you sure you want to delete this event?');">
+
+                        Delete
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        {% endfor %}
+
+
+    {% else %}
+
+
+        <!-- NO EVENTS -->
+
+        <div style="
+            text-align: center;
+            padding: 50px 20px;
+        ">
+
+            <h2>
+                No Events Available
+            </h2>
+
+            <p style="margin-top: 10px; color: #666;">
+                New school events will appear here.
+            </p>
+
+        </div>
+
+
+    {% endif %}
+
+
+</section>
+
+
+
+<!-- ==============================
+     FOOTER
+================================ -->
+
+<footer>
+
+    <h3>
+        Adarsh Public School
+    </h3>
+
+
+    <p>
+        Bhadva Bhainslana Road,
+        Near Jaal ke Balaji
+    </p>
+
+
+    <p>
+        Contact: 9829473980
+    </p>
+
+
+    <p class="copyright">
+
+        © 2026 Adarsh Public School.
+        All Rights Reserved.
+
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>
